@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown, Sparkles, Shield, Zap, Star, ArrowRight, Gem, TrendingUp, Clock } from 'lucide-react'
 
@@ -13,11 +14,64 @@ const heroImages = [
 ]
 
 const stats = [
-  { value: "500+", label: "Jewelry Stores", icon: Star },
-  { value: "98%", label: "Accuracy Rate", icon: Shield },
-  { value: "50K+", label: "Daily Transactions", icon: Zap },
-  { value: "24/7", label: "Support", icon: Clock },
+  { value: 500, label: "Jewelry Stores", icon: Star, suffix: "+" },
+  { value: 98, label: "Accuracy Rate", icon: Shield, suffix: "%" },
+  { value: 50000, label: "Daily Transactions", icon: Zap, suffix: "+" },
+  { value: 24, label: "Support", icon: Clock, suffix: "/7" },
 ]
+
+// Counter Component with scroll trigger
+function AnimatedCounter({ targetValue, suffix, duration = 2000 }) {
+  const [count, setCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const elementRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true)
+          let startTime = null
+          const startValue = 0
+          
+          const animate = (currentTime) => {
+            if (!startTime) startTime = currentTime
+            const progress = Math.min((currentTime - startTime) / duration, 1)
+            const easedProgress = 1 - Math.pow(1 - progress, 3) // Cubic ease out
+            const currentValue = Math.floor(easedProgress * targetValue)
+            setCount(currentValue)
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate)
+            }
+          }
+          
+          requestAnimationFrame(animate)
+        }
+      },
+      { threshold: 0.3, triggerOnce: true }
+    )
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current)
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current)
+      }
+    }
+  }, [targetValue, duration, hasAnimated])
+
+  return (
+    <div ref={elementRef} className="text-center group">
+      <p className="text-2xl font-bold text-white drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-110">
+        {count}{suffix}
+      </p>
+    </div>
+  )
+}
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -57,7 +111,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative w-full h-screen overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen overflow-hidden">
       {/* Image Carousel */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
@@ -79,14 +133,15 @@ export function Hero() {
         ))}
         
         {/* Darker Gradient Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="text-center max-w-4xl animate-fade-up relative z-10">
-          
+      {/* Content - Left Aligned */}
+      <div className="relative min-h-screen flex flex-col items-start justify-center px-4 sm:px-6 lg:px-8 pt-16 max-w-7xl mx-auto">
+        <div className="text-left max-w-4xl animate-fade-up relative z-10">
+          {/* Typing Animation */}
+        
 
           {/* Main Heading with Black Glow */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-balance leading-tight">
@@ -100,40 +155,40 @@ export function Hero() {
             </span>
           </h1>
 
-         
-
-          <p className="text-base sm:text-lg mb-8 text-balance text-white/90 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)] max-w-2xl mx-auto">
-            Streamline your jewelry business with our all-in-one POS solution. 
-            Real-time inventory tracking, automated billing, and insightful analytics 
-            to help you scale your business.
-          </p>
+        
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="group px-8 py-4 bg-gradient-to-r from-primary to-primary hover:from-primary  hover:to-primary text-black font-bold rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 transform hover:scale-105 shadow-lg flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-4 justify-start mb-12">
+            <Link href="#contact" className="group px-8 py-4 bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary text-black font-bold rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 transform hover:scale-105 shadow-lg flex items-center gap-2">
               <Gem className="w-5 h-5" />
               Book Free Demo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-md transition-all duration-300 border border-white/30 shadow-lg hover:shadow-xl flex items-center gap-2">
+            </Link>
+            <Link href="#features" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl backdrop-blur-md transition-all duration-300 border border-white/30 shadow-lg hover:shadow-xl flex items-center gap-2">
               <TrendingUp className="w-5 h-5" />
               Explore Features
-            </button>
+            </Link>
           </div>
 
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-white/20">
+          {/* Stats Section with Counter and Glow */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl pt-6 border-t border-white/20">
             {stats.map((stat, index) => {
               const Icon = stat.icon
               return (
-                <div key={index} className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <Icon className="w-5 h-5 text-primary" />
+                <div 
+                  key={index} 
+                  className="text-center group transition-all duration-300 hover:transform hover:scale-105"
+                >
+                  <div className="flex items-center justify-center mb-2 transition-all duration-300 group-hover:animate-pulse">
+                    <Icon className="w-5 h-5 text-primary transition-all duration-300 group-hover:text-yellow-400 group-hover:drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]" />
                   </div>
-                  <p className="text-2xl font-bold text-white drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]">
-                    {stat.value}
+                  <AnimatedCounter 
+                    targetValue={stat.value} 
+                    suffix={stat.suffix}
+                  />
+                  <p className="text-xs text-white/70 transition-all duration-300 group-hover:text-white/90">
+                    {stat.label}
                   </p>
-                  <p className="text-xs text-white/70">{stat.label}</p>
                 </div>
               )
             })}

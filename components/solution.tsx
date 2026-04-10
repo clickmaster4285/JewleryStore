@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import { Check } from 'lucide-react'
 import gsap from 'gsap'
@@ -272,12 +273,13 @@ export function Solution() {
               ))}
             </div>
 
-            <button 
-              ref={buttonRef}
-              className="mt-8 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black font-bold rounded transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/50"
+            <Link 
+              href="#contact"
+              ref={buttonRef as any}
+              className="mt-8 px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black font-bold rounded transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/50 block w-max text-center"
             >
               Get Started Today
-            </button>
+            </Link>
           </div>
         </div>
       </div>

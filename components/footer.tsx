@@ -27,56 +27,53 @@ export function Footer() {
     <footer 
       ref={footerRef}
       id="contact" 
-      className="bg-primary border-t border-black/10"
+      className="bg-black border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold text-black mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4">
               JewelSync
             </h3>
-            <p className="text-black/70 text-sm">
+            <p className="text-white/70 text-sm">
               Smart POS system designed specifically for modern jewelry retailers.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="text-black font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-black/70 text-sm">
-              <li><Link href="#features" className="hover:text-black hover:underline transition">Features</Link></li>
-
-              <li><Link href="#case-studies" className="hover:text-black hover:underline transition">Case Studies</Link></li>
-
-              <li><Link href="#blog" className="hover:text-black hover:underline transition">Blogs</Link></li>
-
-              <li><Link href="#testimonials" className="hover:text-black hover:underline transition">Testimonials</Link></li>
+            <h4 className="text-white font-semibold mb-4">Product</h4>
+            <ul className="space-y-2 text-white/70 text-sm">
+              <li><Link href="#features" className="hover:text-white hover:underline transition">Features</Link></li>
+              <li><Link href="#case-studies" className="hover:text-white hover:underline transition">Case Studies</Link></li>
+              <li><Link href="#blog" className="hover:text-white hover:underline transition">Blogs</Link></li>
+              <li><Link href="#testimonials" className="hover:text-white hover:underline transition">Testimonials</Link></li>
             </ul>
           </div>
 
           {/* Resources */}
           <div>
-            <h4 className="text-black font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-black/70 text-sm">
-              <li><Link href="#contact" className="hover:text-black hover:underline transition">Documentation</Link></li>
-              <li><Link href="#contact" className="hover:text-black hover:underline transition">API Reference</Link></li>
-              <li><Link href="#contact" className="hover:text-black hover:underline transition">Guides</Link></li>
-              <li><Link href="#contact" className="hover:text-black hover:underline transition">Support</Link></li>
+            <h4 className="text-white font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2 text-white/70 text-sm">
+              <li><Link href="#contact" className="hover:text-white hover:underline transition">Documentation</Link></li>
+              <li><Link href="#contact" className="hover:text-white hover:underline transition">API Reference</Link></li>
+              <li><Link href="#contact" className="hover:text-white hover:underline transition">Guides</Link></li>
+              <li><Link href="#contact" className="hover:text-white hover:underline transition">Support</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-black font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3 text-black/70 text-sm">
+            <h4 className="text-white font-semibold mb-4">Contact</h4>
+            <ul className="space-y-3 text-white/70 text-sm">
               <li className="flex items-center gap-2">
                 <Mail size={16} />
-                <a href="mailto:marketing@clickmasters.pk" className="hover:text-black hover:underline transition">marketing@clickmasters.pk</a>
+                <a href="mailto:marketing@clickmasters.pk" className="hover:text-white hover:underline transition">marketing@clickmasters.pk</a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <a href="tel:+92-333-1116842" className="hover:text-black hover:underline transition">+92 333-1116842</a>
+                <a href="tel:+92-333-1116842" className="hover:text-white hover:underline transition">+92 333-1116842</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="flex-shrink-0 mt-0.5" />
@@ -86,29 +83,29 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-black/10 pt-8">
+        <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             {/* Copyright */}
-            <p className="text-black/60 text-sm">
+            <p className="text-white/60 text-sm">
               © 2026 JewelSync. All rights reserved.
             </p>
 
             {/* Legal Links */}
-            <div className="flex gap-6 text-black/60 text-sm">
-              <Link href="#privacy" className="hover:text-black hover:underline transition">Privacy Policy</Link>
-              <Link href="#23terms" className="hover:text-black hover:underline transition">Terms of Service</Link>
-              <Link href="#cookies" className="hover:text-black hover:underline transition">Cookies</Link>
+            <div className="flex gap-6 text-white/60 text-sm">
+              <Link href="#privacy" className="hover:text-white hover:underline transition">Privacy Policy</Link>
+              <Link href="#23terms" className="hover:text-white hover:underline transition">Terms of Service</Link>
+              <Link href="#cookies" className="hover:text-white hover:underline transition">Cookies</Link>
             </div>
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="p-2 bg-black/10 hover:bg-black/20 text-black rounded-full transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 hover:scale-110">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="p-2 bg-black/10 hover:bg-black/20 text-black rounded-full transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 hover:scale-110">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="p-2 bg-black/10 hover:bg-black/20 text-black rounded-full transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 hover:scale-110">
                 <Facebook size={18} />
               </a>
             </div>
