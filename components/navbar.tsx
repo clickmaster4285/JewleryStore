@@ -25,48 +25,46 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white">
+          <Link href="/" className="text-2xl font-bold text-white flex-shrink-0">
             JewelSync
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="#home" className="text-white/80 hover:text-white transition">Home</Link>
-            <Link href="#features" className="text-white/80 hover:text-white transition">Features</Link>
-            <Link href="#solutions" className="text-white/80 hover:text-white transition">How it Works</Link>
-            <Link href="#case-studies" className="text-white/80 hover:text-white transition">Case Studies</Link>
-            <Link href="#blog" className="text-white/80 hover:text-white transition">Blog</Link>
-            <Link href="#testimonials" className="text-white/80 hover:text-white transition">Testimonials</Link>
-           
+          {/* Desktop Menu - Hidden on tablet */}
+          <div className="hidden lg:flex items-center gap-8">
+            <Link href="#home" className="text-white/80 hover:text-white transition whitespace-nowrap">Home</Link>
+            <Link href="#features" className="text-white/80 hover:text-white transition whitespace-nowrap">Features</Link>
+            <Link href="#solutions" className="text-white/80 hover:text-white transition whitespace-nowrap">How it Works</Link>
+            <Link href="#case-studies" className="text-white/80 hover:text-white transition whitespace-nowrap">Case Studies</Link>
+            <Link href="#blog" className="text-white/80 hover:text-white transition whitespace-nowrap">Blog</Link>
+            <Link href="#testimonials" className="text-white/80 hover:text-white transition whitespace-nowrap">Testimonials</Link>
           </div>
 
-          {/* Contact Sales Button */}
-          <div className="hidden md:block">
-            <Link href="/#contact" className="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition shadow-lg hover:shadow-gold-500/50 duration-300">
+          {/* Contact Sales Button - Hidden on tablet, shows on desktop */}
+          <div className="hidden lg:block">
+            <Link href="/#contact" className="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition shadow-lg hover:shadow-gold-500/50 duration-300 whitespace-nowrap">
               Contact Sales
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Shows on tablet and mobile */}
           <button 
-            className="md:hidden text-white"
+            className="lg:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Shows on tablet and mobile */}
         {mobileOpen && (
-          <div className="md:hidden pb-4 border-t border-white/10">
-            <Link href="#home" className="block py-2 text-white/80 hover:text-white">Home</Link>
-            <Link href="#features" className="block py-2 text-white/80 hover:text-white">Features</Link>
-            <Link href="#solutions" className="block py-2 text-white/80 hover:text-white">Solutions</Link>
-            <Link href="#case-studies" className="block py-2 text-white/80 hover:text-white">Case Studies</Link>
-            <Link href="#blog" className="block py-2 text-white/80 hover:text-white">Blog</Link>
-            <Link href="#testimonials" className="block py-2 text-white/80 hover:text-white">Testimonials</Link>
-            <Link href="#contact" className="block py-2 text-white/80 hover:text-white">Contact</Link>
-            <Link href="/#contact" className="w-full mt-4 px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded block text-left">
+          <div className="lg:hidden pb-4 border-t border-white/10 mt-2">
+            <Link href="#home" className="block py-3 text-white/80 hover:text-white transition">Home</Link>
+            <Link href="#features" className="block py-3 text-white/80 hover:text-white transition">Features</Link>
+            <Link href="#solutions" className="block py-3 text-white/80 hover:text-white transition">How it Works</Link>
+            <Link href="#case-studies" className="block py-3 text-white/80 hover:text-white transition">Case Studies</Link>
+            <Link href="#blog" className="block py-3 text-white/80 hover:text-white transition">Blog</Link>
+            <Link href="#testimonials" className="block py-3 text-white/80 hover:text-white transition">Testimonials</Link>
+            <Link href="/#contact" className="mt-4 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition block text-center">
               Contact Sales
             </Link>
           </div>
