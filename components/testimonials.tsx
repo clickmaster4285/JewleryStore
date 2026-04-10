@@ -9,7 +9,7 @@ const testimonials = [
     name: 'Sarah Mitchell',
     role: 'Owner, Elegance Jewelers',
     company: 'New York, NY',
-    content: 'JewelPOS has been a game-changer for our business. We\'ve cut our administrative time in half and our accuracy has never been better.',
+    content: 'JewelSync has been a game-changer for our business. We\'ve cut our administrative time in half and our accuracy has never been better.',
     rating: 5
   },
   {
@@ -30,7 +30,7 @@ const testimonials = [
     name: 'Marcus Johnson',
     role: 'Owner, Luxury Gems Co',
     company: 'Miami, FL',
-    content: 'We\'ve tried other systems before, but JewelPOS is in a league of its own. Our staff loves how easy it is to use.',
+    content: 'We\'ve tried other systems before, but JewelSync is in a league of its own. Our staff loves how easy it is to use.',
     rating: 5
   }
 ]
@@ -45,19 +45,23 @@ export function Testimonials() {
   const animationRef = useRef<GSAPTimeline | null>(null)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Initial heading animation
-    gsap.fromTo(headingRef.current,
-      {
-        opacity: 0,
-        y: 30
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power2.out'
-      }
-    )
+    if (headingRef.current) {
+      gsap.fromTo(headingRef.current,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out'
+        }
+      )
+    }
 
     // Animate first card
     animateCard(current)
@@ -70,6 +74,8 @@ export function Testimonials() {
   }, [])
 
   const animateCard = (index: number) => {
+    if (typeof window === 'undefined') return;
+
     // Kill any ongoing animation
     if (animationRef.current) {
       animationRef.current.kill()
@@ -98,7 +104,7 @@ export function Testimonials() {
             ease: 'back.out(0.5)'
           }
         )
-        .fromTo(currentCard.querySelector('.stars'),
+        .fromTo(currentCard.querySelector('.stars') as Element,
           {
             opacity: 0,
             scale: 0
@@ -111,7 +117,7 @@ export function Testimonials() {
           },
           '-=0.3'
         )
-        .fromTo(currentCard.querySelector('.testimonial-content'),
+        .fromTo(currentCard.querySelector('.testimonial-content') as Element,
           {
             opacity: 0,
             y: 20
@@ -124,7 +130,7 @@ export function Testimonials() {
           },
           '-=0.2'
         )
-        .fromTo(currentCard.querySelector('.testimonial-author'),
+        .fromTo(currentCard.querySelector('.testimonial-author') as Element,
           {
             opacity: 0,
             x: -20

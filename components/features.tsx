@@ -35,7 +35,7 @@ const features = [
   },
   {
     icon: BarChart3,
-    title: 'Inventory Mgmt',
+    title: 'Inventory Management',
     description: 'Advanced stock management with automatic low-stock alerts'
   }
 ]
@@ -69,16 +69,15 @@ export function Features() {
       )
 
       // Title gradient reveal
-      if (titleRef.current) {
+          if (titleRef.current) {
         gsap.fromTo(titleRef.current,
           {
-            backgroundImage: 'linear-gradient(90deg, #fff 0%, #fff 0%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent'
+            opacity: 0,
+            y: 30
           },
           {
-            backgroundImage: 'linear-gradient(90deg, #fff 0%, #FFD700 100%)',
+            opacity: 1,
+            y: 0,
             duration: 1.5,
             ease: 'power2.out',
             scrollTrigger: {
@@ -198,7 +197,7 @@ export function Features() {
         <div ref={headingRef} className="text-center mb-16">
           <h2 
             ref={titleRef}
-            className="text-4xl sm:text-5xl font-bold text-white mb-4"
+            className="text-4xl sm:text-5xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white"
           >
             Powerful Features
           </h2>

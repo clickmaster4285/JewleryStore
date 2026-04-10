@@ -131,7 +131,7 @@ export function CaseStudies() {
             Real Results from Real Retailers
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            See how jewelry businesses transformed with JewelPOS
+            See how jewelry businesses transformed with JewelSync
           </p>
         </div>
 
@@ -160,7 +160,7 @@ export function CaseStudies() {
                 Elegance Jewelers: 35% Revenue Growth in 6 Months
               </h3>
               <p className="text-white/70 mb-6">
-                By implementing JewelPOS, this premium jewelry retailer eliminated inventory discrepancies, reduced billing errors by 100%, and increased revenue by 35% through better data-driven decisions.
+                By implementing JewelSync, this premium jewelry retailer eliminated inventory discrepancies, reduced billing errors by 100%, and increased revenue by 35% through better data-driven decisions.
               </p>
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-white/10 p-4 rounded">

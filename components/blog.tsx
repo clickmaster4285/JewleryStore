@@ -243,14 +243,14 @@ export function Blog() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <button 
             ref={buttonRef}
             className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded transition-all duration-300 border border-white/20 hover:border-gold-500/50"
           >
             View All Articles
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   )

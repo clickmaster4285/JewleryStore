@@ -58,31 +58,40 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="text-center max-w-3xl animate-fade-up">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">
-            Smart Jewelry POS System for Modern Retailers
-          </h1>
-          <p className="text-lg sm:text-xl text-white/90 mb-8 text-balance">
-            Manage inventory, billing, customers, and sales in one powerful platform built for jewelry businesses.
-          </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black font-bold rounded transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/50 transform hover:scale-105">
-              Book Free Demo
-            </button>
-            <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded backdrop-blur-md transition-all duration-300 border border-white/30">
-              Explore Features
-            </button>
-          </div>
-        </div>
+ <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+  {/* Dark overlay - consider adjusting opacity based on your images */}
+  <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+  
+  <div className="text-center max-w-3xl animate-fade-up relative z-10">
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-balance">
+      <span className="text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
+        Every Gram Matters.
+      </span>
+      <span className='text-primary drop-shadow-[0_0_20px_rgba(255,215,0,0.6)] drop-shadow-[0_0_5px_rgba(0,0,0,0.5)]'>
+        {' '}Track It Right.
+      </span>
+    </h1>
+    <p className="text-lg sm:text-xl mb-8 text-balance text-white/95 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+      Manage inventory, billing, and sales with precision using a system built for jewelry businesses
+    </p>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown size={32} className="text-white/60" />
-        </div>
-      </div>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <button className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black font-bold rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/50 transform hover:scale-105 shadow-lg">
+        Book Free Demo
+      </button>
+      <button className="px-8 py-4 bg-black/40 hover:bg-black/60 text-white font-bold rounded-xl backdrop-blur-md transition-all duration-300 border border-white/40 shadow-lg hover:shadow-xl">
+        Explore Features
+      </button>
+    </div>
+  </div>
+
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <ChevronDown size={32} className="text-white/90 drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]" />
+  </div>
+</div>
+      
+
     </section>
   )
 }

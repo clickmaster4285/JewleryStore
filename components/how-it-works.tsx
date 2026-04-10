@@ -12,7 +12,7 @@ const steps = [
     icon: Download,
     number: '01',
     title: 'Install & Setup',
-    description: 'Get JewelPOS up and running in just 15 minutes with our quick setup wizard'
+    description: 'Get JewelSync up and running in just 15 minutes with our quick setup wizard'
   },
   {
     icon: Zap,

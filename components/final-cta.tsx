@@ -124,7 +124,7 @@ export function FinalCTA() {
           ref={paragraphRef}
           className="text-lg text-white/70 mb-8 max-w-2xl mx-auto"
         >
-          Join hundreds of jewelry retailers who&apos;ve already improved their operations with JewelPOS. Start your free trial today.
+          Join hundreds of jewelry retailers who&apos;ve already improved their operations with JewelSync. Start your free trial today.
         </p>
 
         {/* CTA Buttons */}
@@ -133,7 +133,7 @@ export function FinalCTA() {
             ref={el => {
               buttonsRef.current[0] = el
             }}
-            className="px-8 py-4 bg-white text-black hover:bg-white/90 font-bold rounded transition-all duration-300 hover:shadow-2xl transform hover:scale-105"
+            className="px-8 py-4 bg-primary text-black hover:bg-white/90 font-bold rounded transition-all duration-300 hover:shadow-2xl transform hover:scale-105"
           >
             Book Free Demo
           </button>

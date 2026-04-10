@@ -11,7 +11,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold text-white mb-4">
-              <span className="text-gold-400">◆</span> JewelPOS
+              <span className="text-gold-400">◆</span> JewelSync
             </h3>
             <p className="text-white/60 text-sm">
               Smart POS system designed specifically for modern jewelry retailers.
@@ -46,7 +46,7 @@ export function Footer() {
             <ul className="space-y-3 text-white/60 text-sm">
               <li className="flex items-center gap-2">
                 <Mail size={16} />
-                <a href="mailto:hello@jewelpos.com" className="hover:text-gold-400 transition">hello@jewelpos.com</a>
+                <a href="mailto:hello@JewelSync.com" className="hover:text-gold-400 transition">hello@JewelSync.com</a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} />
@@ -64,7 +64,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             {/* Copyright */}
             <p className="text-white/60 text-sm">
-              © 2024 JewelPOS. All rights reserved.
+              © 2024 JewelSync. All rights reserved.
             </p>
 
             {/* Legal Links */}

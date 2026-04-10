@@ -26,7 +26,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-white">
-            <span className="text-gold-400">◆</span> JewelPOS
+            <span className="text-gold-400">◆</span> JewelSync
           </Link>
 
           {/* Desktop Menu */}

@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'JewelPOS - Smart Jewelry Retail POS System',
+  title: 'JewelSync - Smart Jewelry Retail POS System',
   description: 'Complete POS system for jewelry retailers. Real-time inventory tracking, automated billing, CRM, and advanced analytics. Transform your jewelry business today.',
   generator: 'v0.app',
   icons: {
