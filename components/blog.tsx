@@ -111,7 +111,7 @@ export function Blog() {
       )
 
       // Other posts staggered fade in
-      otherPostsRef.current.forEach((post, index) => {
+        otherPostsRef.current.forEach((post, index) => {
         if (!post) return
         
         gsap.fromTo(post,

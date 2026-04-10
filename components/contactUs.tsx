@@ -277,7 +277,9 @@ const getMapEmbedUrl = () => {
   return `https://maps.google.com/maps?q=${encodeURIComponent(
     LOCATION.fullAddress
   )}&t=&z=16&ie=UTF8&iwloc=&output=embed`
-}
+  }
+  
+  
   const getDirectionsUrl = () => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(LOCATION.fullAddress)}`
   
   const getStaticMapUrl = () => {

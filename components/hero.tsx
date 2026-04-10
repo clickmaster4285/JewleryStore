@@ -20,7 +20,8 @@ const stats = [
   { value: 24, label: "Support", icon: Clock, suffix: "/7" },
 ]
 
-// Counter Component with scroll trigger
+
+// Counter Component with scroll trigger and enhanced glow
 function AnimatedCounter({ targetValue, suffix, duration = 2000 }) {
   const [count, setCount] = useState(0)
   const [hasAnimated, setHasAnimated] = useState(false)
@@ -66,7 +67,7 @@ function AnimatedCounter({ targetValue, suffix, duration = 2000 }) {
 
   return (
     <div ref={elementRef} className="text-center group">
-      <p className="text-2xl font-bold text-white drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-110">
+      <p className="text-2xl sm:text-3xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.8)] group-hover:text-yellow-100">
         {count}{suffix}
       </p>
     </div>
@@ -170,29 +171,31 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* Stats Section with Counter and Glow */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl pt-6 border-t border-white/20">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon
-              return (
-                <div 
-                  key={index} 
-                  className="text-center group transition-all duration-300 hover:transform hover:scale-105"
-                >
-                  <div className="flex items-center justify-center mb-2 transition-all duration-300 group-hover:animate-pulse">
-                    <Icon className="w-5 h-5 text-primary transition-all duration-300 group-hover:text-yellow-400 group-hover:drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]" />
-                  </div>
-                  <AnimatedCounter 
-                    targetValue={stat.value} 
-                    suffix={stat.suffix}
-                  />
-                  <p className="text-xs text-white/70 transition-all duration-300 group-hover:text-white/90">
-                    {stat.label}
-                  </p>
-                </div>
-              )
-            })}
-          </div>
+      
+
+{/* Stats Section with Counter and Glow */}
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl pt-8 border-t border-white/20">
+  {stats.map((stat, index) => {
+    const Icon = stat.icon
+    return (
+      <div 
+        key={index} 
+        className="text-center group transition-all duration-300 hover:transform hover:scale-110"
+      >
+        <div className="flex items-center justify-center mb-3 transition-all duration-300 group-hover:animate-pulse">
+          {/* <Icon className="w-7 h-7 text-primary transition-all duration-300 group-hover:text-yellow-400 group-hover:drop-shadow-[0_0_12px_rgba(255,215,0,0.9)]" /> */}
+        </div>
+        <AnimatedCounter 
+          targetValue={stat.value} 
+          suffix={stat.suffix}
+        />
+        <p className="text-sm font-medium text-white/80 transition-all duration-300 group-hover:text-white group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
+          {stat.label}
+        </p>
+      </div>
+    )
+  })}
+</div>
         </div>
 
         {/* Scroll Indicator */}
