@@ -37,14 +37,14 @@ export function Navbar() {
             <Link href="#case-studies" className="text-white/80 hover:text-white transition">Case Studies</Link>
             <Link href="#blog" className="text-white/80 hover:text-white transition">Blog</Link>
             <Link href="#testimonials" className="text-white/80 hover:text-white transition">Testimonials</Link>
-            <Link href="#contact" className="text-white/80 hover:text-white transition">Contact</Link>
+           
           </div>
 
           {/* Contact Sales Button */}
           <div className="hidden md:block">
-            <button className="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition shadow-lg hover:shadow-gold-500/50 duration-300">
-             Contact Sales
-            </button>
+            <Link href="/#contact" className="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition shadow-lg hover:shadow-gold-500/50 duration-300">
+              Contact Sales
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -66,9 +66,9 @@ export function Navbar() {
             <Link href="#blog" className="block py-2 text-white/80 hover:text-white">Blog</Link>
             <Link href="#testimonials" className="block py-2 text-white/80 hover:text-white">Testimonials</Link>
             <Link href="#contact" className="block py-2 text-white/80 hover:text-white">Contact</Link>
-            <button className="w-full mt-4 px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded">
-              Book Demo
-            </button>
+            <Link href="/#contact" className="w-full mt-4 px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded block text-left">
+              Contact Sales
+            </Link>
           </div>
         )}
       </div>

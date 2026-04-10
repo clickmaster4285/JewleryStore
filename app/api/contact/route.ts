@@ -14,7 +14,7 @@ const adminEmailHtml = (name: string, email: string, message: string, additional
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RealState Contact Form Submissionion</title>
+  <title>JewelSync Contact Form Submissionion</title>
   <style>
     body {
       margin: 0;
@@ -34,11 +34,11 @@ const adminEmailHtml = (name: string, email: string, message: string, additional
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    .header {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      padding: 32px 24px;
-      text-align: center;
-    }
+.header {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  padding: 32px 24px;
+  text-align: center;
+}
     .header h1 {
       margin: 0;
       font-size: 24px;
@@ -146,7 +146,7 @@ const adminEmailHtml = (name: string, email: string, message: string, additional
   <div class="container">
     <div class="email-wrapper">
       <div class="header">
-        <h1>RealState Contact Form Submissionion</h1>
+        <h1>JewlSync Contact Form Submissionion</h1>
         <p>from your website contact form</p>
       </div>
       
@@ -472,10 +472,10 @@ export async function POST(req: NextRequest) {
       from: `"${process.env.ALIAS_NAME || 'ClickMasters'}" <${process.env.ALIAS_EMAIL || process.env.SMTP_MAIL}>`,
       to: process.env.RECEIVER_EMAIL || process.env.SMTP_MAIL,
       replyTo: email,
-      subject: `📬 New Contact Form Submission from ${name}`,
+      subject: `JewelSync Contact Form Submission from ${name}`,
       html: adminEmailHtml(name, email, message, additionalInfo),
       // Add plain text alternative for better email client compatibility
-      text: `RealState Contact Form Submissionion\n\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ''}${company ? `Company: ${company}\n` : ''}${services ? `Services: ${services}\n` : ''}${budget ? `Budget: ${budget}\n` : ''}\nMessage:\n${message}`,
+      text: `JewelSync Contact Form Submission\n\nName: ${name}\nEmail: ${email}\n${phone ? `Phone: ${phone}\n` : ''}${company ? `Company: ${company}\n` : ''}${services ? `Services: ${services}\n` : ''}${budget ? `Budget: ${budget}\n` : ''}\nMessage:\n${message}`,
     };
 
     // Send auto-reply to user with styled HTML

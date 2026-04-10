@@ -46,6 +46,7 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+  const [mapError, setMapError] = useState(false)
   
   const sectionRef = useRef<HTMLElement>(null)
   const leftColumnRef = useRef<HTMLDivElement>(null)
@@ -241,37 +242,49 @@ export function Contact() {
       icon: Phone,
       title: "Phone",
       infos: [
-        { value: "+1-800-JEWELS", action: "tel:+1800JEWELS" },
-        { value: "+1-212-555-0123", action: "tel:+12125550123" },
+        { value: "+92 333-1116842", action: "tel:+923331116842" },
+        { value: "+92 332-5394285", action: "tel:+923325394285" },
       ],
-      color: "from-blue-500/20 to-blue-600/20",
-      iconColor: "text-blue-400"
     },
     {
       icon: Mail,
       title: "Email",
       infos: [
-        { value: "hello@JewelSync.com", subtext: "We respond within 24 hours", action: "mailto:hello@JewelSync.com" },
-        { value: "support@JewelSync.com", subtext: "24/7 technical support", action: "mailto:support@JewelSync.com" },
+        { value: "marketing@clickmasters.pk", subtext: "We respond within 24 hours", action: "mailto:marketing@clickmasters.pk" },
+        { value: "info@clickmasters.pk", subtext: "24/7 technical support", action: "mailto:info@clickmasters.pk" },
       ],
-      color: "from-emerald-500/20 to-emerald-600/20",
-      iconColor: "text-emerald-400"
     },
     {
       icon: Clock,
       title: "Business Hours",
-      infos: [{ value: "Monday - Saturday", subtext: "9:00 AM - 6:00 PM EST" }],
-      color: "from-purple-500/20 to-purple-600/20",
-      iconColor: "text-purple-400"
+      infos: [{ value: "Monday - Saturday", subtext: "9:00 AM - 6:00 PM" }],
     },
     {
       icon: Building,
       title: "Support",
       infos: [{ value: "24/7 Technical Support" }],
-      color: "from-orange-500/20 to-orange-600/20",
-      iconColor: "text-orange-400"
     },
   ]
+
+  const LOCATION = {
+    name: "ClickMasters - Real Estate POS",
+    address: "Paris Shopping Mall, 4th floor, PWD",
+    fullAddress: "Paris Shopping Mall, 4th floor, Main PWD Rd, PWD Housing Society Sector A, Islamabad, Punjab 45700, Pakistan",
+  }
+
+  // Generate Google Maps embed URL with location pin
+const getMapEmbedUrl = () => {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(
+    LOCATION.fullAddress
+  )}&t=&z=16&ie=UTF8&iwloc=&output=embed`
+}
+  const getDirectionsUrl = () => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(LOCATION.fullAddress)}`
+  
+  const getStaticMapUrl = () => {
+    // Using a reliable static map service with the location pin
+    const encodedAddress = encodeURIComponent(LOCATION.fullAddress)
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&size=600x300&markers=color:red%7C${encodedAddress}&key=YOUR_API_KEY`
+  }
 
   return (
     <section 
@@ -409,7 +422,7 @@ export function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-2.5 bg-black/50 border border-white/20 rounded-xl text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-gold-500 transition"
-                      placeholder="+1-800-JEWELS"
+                      placeholder="+92-300-0000000"
                     />
                   </div>
 
@@ -432,7 +445,7 @@ export function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black font-semibold rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-gold-500/20"
+                    className="w-full px-6 py-3 bg-primary   font-semibold rounded-xl transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-gold-500/20"
                   >
                     {isSubmitting ? (
                       <>
@@ -453,54 +466,92 @@ export function Contact() {
 
           {/* RIGHT COLUMN - FAQ + Map */}
           <div ref={rightColumnRef} className="space-y-8">
-            {/* Map Card */}
+            {/* Map Card with Live Google Maps */}
             <div 
               ref={mapRef}
               className="bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden"
             >
               <div className="p-4 border-b border-white/10 bg-black/30">
-                <h3 className="font-semibold text-white flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  Visit Our Office
-                </h3>
-                <p className="text-sm text-white/50 mt-1">
-                  123 Retail Street, New York, NY 10001
-                </p>
-              </div>
-              <div className="h-[240px] w-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/5 to-transparent" />
-                <div className="text-center relative z-10">
-                  <div className="w-16 h-16 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-3 animate-pulse">
-                    <MapPin className="w-8 h-8 text-primary" />
-                  </div>
-                  <p className="text-white/60 text-sm">Interactive Map Loading...</p>
-                  <a 
-                    href="https://maps.google.com/?q=123+Retail+Street+New+York+NY+10001"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-3 text-primary text-sm hover:underline"
-                  >
-                    <Navigation className="h-3 w-3" />
-                    View on Google Maps →
-                  </a>
-                </div>
-              </div>
-              <div className="p-4 border-t border-white/10 bg-black/20">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-white/60">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>Book a visit: <a href="tel:+1-800-JEWELS" className="text-primary hover:underline">1-800-JEWELS</a></span>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="font-semibold text-white flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-primary" />
+                      Our Location
+                    </h3>
+                    <p className="text-sm text-white/50 mt-1 max-w-md">
+                      {LOCATION.address}
+                    </p>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=123+Retail+Street+New+York+NY+10001"
+                    href={getDirectionsUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-gold-300 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs bg-gold-500/20 hover:bg-gold-500/30 text-primary px-3 py-1.5 rounded-lg transition-colors"
                   >
-                    <Navigation className="h-4 w-4" />
-                    Get Directions
+                    <Navigation className="h-3 w-3" />
+                    Directions
                   </a>
                 </div>
+              </div>
+              
+              {/* Google Maps Iframe with location pin */}
+              <div className="h-[280px] w-full relative overflow-hidden bg-gray-900">
+                {!mapError ? (
+                  <iframe
+                    title="Office Location Map"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    scrolling="no"
+                    marginHeight={0}
+                    marginWidth={0}
+                    src={getMapEmbedUrl()}
+                    onError={() => setMapError(true)}
+                    className="absolute inset-0 w-full h-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900 p-6 text-center">
+                    <MapPin className="h-12 w-12 text-primary mb-3" />
+                    <p className="text-white/80 text-sm font-medium mb-2">Paris Shopping Mall, 4th floor, PWD</p>
+                    <p className="text-white/50 text-xs mb-4">Main PWD Rd, Islamabad, Pakistan</p>
+                    <a
+                      href={getDirectionsUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary text-sm hover:underline"
+                    >
+                      <Navigation className="h-3.5 w-3.5" />
+                      Open in Google Maps →
+                    </a>
+                  </div>
+                )}
+                
+                {/* Location pin overlay effect */}
+                <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1 text-[10px] text-white/60 pointer-events-none z-10">
+                  📍 Exact location pinned
+                </div>
+              </div>
+              
+              <div className="p-4 border-t border-white/10 bg-black/20">
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <div className="flex items-center gap-2 text-sm text-white/60">
+                    <Calendar className="h-4 w-4 text-primary" />
+                    <span>Book a visit: <a href="tel:+923331116842" className="text-primary hover:underline">+92 333-1116842</a></span>
+                  </div>
+                  <button
+                    onClick={() => window.open(getDirectionsUrl(), '_blank')}
+                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-gold-300 transition-colors bg-gold-500/10 px-3 py-1.5 rounded-lg"
+                  >
+                    <Navigation className="h-3.5 w-3.5" />
+                    Get Directions
+                  </button>
+                </div>
+                <p className="text-xs text-white/30 mt-3 flex items-center gap-1">
+                  <MapPin className="h-3 w-3" />
+                  {LOCATION.fullAddress}
+                </p>
               </div>
             </div>
 
@@ -553,7 +604,7 @@ export function Contact() {
               </div>
 
               {/* Trust Badge */}
-              <div className="mt-6 p-4 rounded-xl border  border-white/10 text-center">
+              <div className="mt-6 p-4 rounded-xl border border-white/10 text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <Award className="w-4 h-4 text-primary" />
                   <span className="text-white text-sm font-semibold">Trusted by 500+ Jewelry Retailers</span>
