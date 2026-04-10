@@ -13,7 +13,7 @@ const blogPosts = [
     id: 1,
     title: 'The Complete Guide to Jewelry Inventory Management',
     excerpt: 'Learn how to optimize your jewelry inventory with best practices and smart systems.',
-    date: 'Mar 15, 2024',
+    date: 'Mar 15, 2025',
     featured: true,
     image: '/blog-featured.jpg'
   },
@@ -21,7 +21,7 @@ const blogPosts = [
     id: 2,
     title: 'Jewelry Business Profitability: Key Metrics to Track',
     excerpt: 'Understand the essential metrics that determine your retail profitability.',
-    date: 'Mar 10, 2024',
+    date: 'Mar 10, 2025',
     featured: false,
     image: '/hero-jewelry-1.jpg'
   },
@@ -29,7 +29,7 @@ const blogPosts = [
     id: 3,
     title: 'Customer CRM Strategies for Jewelry Retailers',
     excerpt: 'Build lasting relationships with your customers through smart CRM practices.',
-    date: 'Mar 5, 2024',
+    date: 'Mar 5, 2025',
     featured: false,
     image: '/hero-jewelry-2.jpg'
   },
@@ -37,7 +37,7 @@ const blogPosts = [
     id: 4,
     title: 'Digital Transformation in Luxury Retail',
     excerpt: 'How modern technology is reshaping the jewelry retail landscape.',
-    date: 'Feb 28, 2024',
+    date: 'Feb 28, 2025',
     featured: false,
     image: '/hero-jewelry-3.jpg'
   },
@@ -45,7 +45,7 @@ const blogPosts = [
     id: 5,
     title: 'Preventing Jewelry Theft and Loss',
     excerpt: 'Implement security measures to protect your high-value inventory.',
-    date: 'Feb 20, 2024',
+    date: 'Feb 20, 2025',
     featured: false,
     image: '/case-study-1.jpg'
   },
@@ -53,7 +53,7 @@ const blogPosts = [
     id: 6,
     title: 'Multi-Store Management Best Practices',
     excerpt: 'Scale your jewelry business across multiple locations efficiently.',
-    date: 'Feb 15, 2024',
+    date: 'Feb 15, 2025',
     featured: false,
     image: '/solution-image.jpg'
   }
@@ -189,20 +189,20 @@ export function Blog() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
-            <div className="flex flex-col justify-center p-8 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10">
+            <div className="flex flex-col justify-center p-8 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:border-primary/50 hover:bg-white/10">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-gold-400 font-bold text-sm">FEATURED</span>
+              <span className="text-primary font-bold text-sm">FEATURED</span>
               </div>
-              <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">
+              <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
                 {featured.title}
               </h3>
-              <p className="text-white/70 mb-6">{featured.excerpt}</p>
+              <p className="text-muted-foreground mb-6">{featured.excerpt}</p>
               <div className="flex items-center justify-between mt-auto">
-                <div className="flex items-center gap-2 text-white/60 text-sm">
+                <div className="flex items-center gap-2 text-muted-foreground text-sm">
                   <Calendar size={16} />
                   {featured.date}
                 </div>
-                <ArrowRight className="text-gold-400 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="text-primary group-hover:translate-x-2 transition-transform duration-300" />
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@ export function Blog() {
               ref={el => {
                 otherPostsRef.current[index] = el
               }}
-              className="group cursor-pointer bg-white/5 border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10 flex flex-col"
+              className="group cursor-pointer bg-white/5 border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50 hover:bg-white/10 flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -227,7 +227,7 @@ export function Blog() {
                 />
               </div>
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-gold-400 transition-colors duration-300 line-clamp-2">
+                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-2">
                   {post.title}
                 </h3>
                 <p className="text-white/60 text-sm mb-4 flex-grow">{post.excerpt}</p>
@@ -236,7 +236,7 @@ export function Blog() {
                     <Calendar size={14} />
                     {post.date}
                   </span>
-                  <ArrowRight size={16} className="text-gold-400 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight size={16} className="text-primary group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
             </div>

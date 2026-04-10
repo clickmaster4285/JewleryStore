@@ -9,6 +9,7 @@ import { CaseStudies } from '@/components/case-studies'
 import { Testimonials } from '@/components/testimonials'
 import { Blog } from '@/components/blog'
 import { FinalCTA } from '@/components/final-cta'
+import {Contact} from '@/components/contactUs'
 import { Footer } from '@/components/footer'
 
 export default function Home() {
@@ -24,7 +25,8 @@ export default function Home() {
       <CaseStudies />
       <Testimonials />
       <Blog />
-      <FinalCTA />
+      {/* <FinalCTA /> */}
+      <Contact />
       <Footer />
     </main>
   )

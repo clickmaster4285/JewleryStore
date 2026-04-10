@@ -241,7 +241,7 @@ ref={sectionRef}
                   <div className="testimonial-author">
                     <p className="text-white font-semibold text-lg">{testimonial.name}</p>
                     <p className="text-white/60 text-sm">{testimonial.role}</p>
-                    <p className="text-gold-400 text-xs mt-1">{testimonial.company}</p>
+                    <p className="text-primary text-xs mt-1">{testimonial.company}</p>
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@ ref={sectionRef}
           <div className="flex items-center justify-between mt-8">
             <button
               onClick={goToPrev}
-              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-gold-500/50 hover:scale-110"
+              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-primary/50 hover:scale-110"
             >
               <ChevronLeft size={20} />
             </button>
@@ -265,7 +265,7 @@ ref={sectionRef}
                   onClick={() => goToIndex(index)}
                   className={`h-2 rounded-full transition-all duration-500 ${
                     index === current 
-                      ? 'bg-gold-500 w-8' 
+                      ? 'bg-primary w-8' 
                       : 'bg-white/40 w-2 hover:bg-white/60'
                   }`}
                 />
@@ -274,7 +274,7 @@ ref={sectionRef}
 
             <button
               onClick={goToNext}
-              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-gold-500/50 hover:scale-110"
+              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-primary/50 hover:scale-110"
             >
               <ChevronRight size={20} />
             </button>

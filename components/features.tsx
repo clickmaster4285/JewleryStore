@@ -218,14 +218,14 @@ export function Features() {
                 ref={el => {
                   cardsRef.current[index] = el
                 }}
-                className="group relative p-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-xl transition-all duration-500 hover:border-gold-500/50 hover:shadow-2xl hover:shadow-gold-500/10 hover:-translate-y-2 cursor-pointer"
+                className="group relative p-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-xl transition-all duration-500 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 cursor-pointer"
               >
                 <div className="relative z-10">
                   <div className="mb-4 relative">
-                    <Icon className="feature-icon w-12 h-12 text-gold-400" />
-                    <div className="absolute inset-0 bg-gold-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <Icon className="feature-icon w-12 h-12 text-primary" />
+                    <div className="absolute inset-0 bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-gold-400 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="feature-description text-white/60 group-hover:text-white/80 transition-colors duration-300">
@@ -234,8 +234,8 @@ export function Features() {
                 </div>
 
                 {/* Decorative corner accent */}
-                <div className="absolute top-3 right-3 w-8 h-8 border-t border-r border-gold-500/0 group-hover:border-gold-500/50 transition-all duration-500 rounded-tr-xl" />
-                <div className="absolute bottom-3 left-3 w-8 h-8 border-b border-l border-gold-500/0 group-hover:border-gold-500/50 transition-all duration-500 rounded-bl-xl" />
+                <div className="absolute top-3 right-3 w-8 h-8 border-t border-r border-primary/60 group-hover:border-primary/50 transition-all duration-500 rounded-tr-xl" />
+                <div className="absolute bottom-3 left-3 w-8 h-8 border-b border-l border-primary/60 group-hover:border-primary/50 transition-all duration-500 rounded-bl-xl" />
               </div>
             )
           })}

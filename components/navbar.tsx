@@ -26,7 +26,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-white">
-            <span className="text-gold-400">◆</span> JewelSync
+            JewelSync
           </Link>
 
           {/* Desktop Menu */}
@@ -40,10 +40,10 @@ export function Navbar() {
             <Link href="#contact" className="text-white/80 hover:text-white transition">Contact</Link>
           </div>
 
-          {/* Book Demo Button */}
+          {/* Contact Sales Button */}
           <div className="hidden md:block">
             <button className="px-6 py-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold rounded transition shadow-lg hover:shadow-gold-500/50 duration-300">
-              Book Demo
+             Contact Sales
             </button>
           </div>
 

@@ -344,7 +344,7 @@ export function HowItWorks() {
           {/* Timeline Line */}
           <div 
             ref={timelineLineRef}
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold-500 via-gold-500/50 to-gold-500/10 transform -translate-x-1/2"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/40 transform -translate-x-1/2"
           />
 
           <div className="space-y-12 md:space-y-24">
@@ -356,7 +356,7 @@ export function HowItWorks() {
                 <div key={index} className="relative">
                   {/* Timeline dot */}
                   <div className="timeline-dot hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-4 h-4 bg-gold-500 rounded-full ring-4 ring-gold-500/20" />
+                    <div className="w-4 h-4 bg-primary rounded-full ring-4 ring-primary/20" />
                   </div>
 
                   <div className={`flex ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} flex-col items-center gap-8`}>
@@ -367,8 +367,8 @@ export function HowItWorks() {
                       }}
                       className="flex-1 md:w-1/2 w-full"
                     >
-                      <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-lg transition-all duration-500 hover:border-gold-500/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-gold-500/10 cursor-pointer">
-                        <p className="step-number text-gold-400 font-bold text-lg mb-2">{step.number}</p>
+                      <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-lg transition-all duration-500 hover:border-primary/50 hover:bg-white/10 hover:shadow-2xl hover:shadow-primary/10 cursor-pointer">
+                        <p className="step-number text-primary font-bold text-lg mb-2">{step.number}</p>
                         <h3 className="step-title text-2xl font-bold text-white mb-3">{step.title}</h3>
                         <p className="step-description text-white/60">{step.description}</p>
                       </div>
@@ -380,12 +380,12 @@ export function HowItWorks() {
                         ref={el => {
                           iconCirclesRef.current[index] = el
                         }}
-                        className="relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center shadow-2xl shadow-gold-500/30 z-10 cursor-pointer transition-all duration-300 hover:scale-110"
+                        className="relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center shadow-2xl shadow-primary/30 z-10 cursor-pointer transition-all duration-300 hover:scale-110"
                       >
                         <Icon size={36} className="text-black md:w-8 md:h-8" />
                         
                         {/* Pulsing ring effect */}
-                        <div className="absolute inset-0 rounded-full bg-gold-500/20 animate-ping opacity-75" />
+                        <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75" />
                       </div>
                     </div>
                   </div>
@@ -398,9 +398,9 @@ export function HowItWorks() {
         {/* Decorative bottom element */}
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 text-white/40 text-sm">
-            <div className="w-16 h-px bg-gold-500/30" />
+            <div className="w-16 h-px bg-primary/30" />
             <span>Simple. Fast. Efficient.</span>
-            <div className="w-16 h-px bg-gold-500/30" />
+            <div className="w-16 h-px bg-primary/30" />
           </div>
         </div>
       </div>

@@ -54,14 +54,14 @@ export function Hero() {
         ))}
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/20" />
       </div>
 
       {/* Content */}
 
  <div className="relative h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
   {/* Dark overlay - consider adjusting opacity based on your images */}
-  <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+  <div className="absolute inset-0 bg-black/10 pointer-events-none" />
   
   <div className="text-center max-w-3xl animate-fade-up relative z-10">
     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-balance">

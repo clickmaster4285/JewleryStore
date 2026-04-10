@@ -138,7 +138,7 @@ export function CaseStudies() {
         {/* Featured Case Study */}
         <div 
           ref={featuredCardRef}
-          className="mb-12 bg-gradient-to-r from-gold-500/10 to-transparent p-8 lg:p-12 rounded-xl border border-gold-500/30"
+          className="mb-12 bg-gradient-to-r from-primary/10 to-transparent p-8 lg:p-12 rounded-xl border border-white/10"
         >
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-64 lg:h-[400px] rounded-lg overflow-hidden">
@@ -153,8 +153,8 @@ export function CaseStudies() {
             
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <TrendingUp className="text-gold-400" size={24} />
-                <span className="text-gold-400 font-semibold">Featured Success</span>
+                <TrendingUp className="text-primary" size={24} />
+                <span className="text-primary font-semibold">Featured Success</span>
               </div>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Elegance Jewelers: 35% Revenue Growth in 6 Months
@@ -164,15 +164,15 @@ export function CaseStudies() {
               </p>
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-white/10 p-4 rounded">
-                  <p className="text-gold-400 font-bold text-lg">99.8%</p>
+                  <p className="text-primary font-bold text-lg">99.8%</p>
                   <p className="text-white/60 text-sm">Accuracy</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded">
-                  <p className="text-gold-400 font-bold text-lg">20hrs</p>
+                  <p className="text-primary font-bold text-lg">20hrs</p>
                   <p className="text-white/60 text-sm">Saved/week</p>
                 </div>
                 <div className="bg-white/10 p-4 rounded">
-                  <p className="text-gold-400 font-bold text-lg">+35%</p>
+                  <p className="text-primary font-bold text-lg">+35%</p>
                   <p className="text-white/60 text-sm">Revenue</p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export function CaseStudies() {
               ref={el => {
                 otherCardsRef.current[index] = el
               }}
-              className="bg-white/5 border border-white/10 p-6 rounded-lg transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10"
+              className="bg-white/5 border border-white/10 p-6 rounded-lg transition-all duration-300 hover:border-primary/50 hover:bg-white/10"
             >
               <h3 className="text-2xl font-bold text-white mb-4">{study.company}</h3>
               
@@ -199,7 +199,7 @@ export function CaseStudies() {
                 </div>
                 <div>
                   <p className="text-white/60 text-sm">After</p>
-                  <p className="text-gold-400 font-semibold">{study.after}</p>
+                  <p className="text-primary font-semibold">{study.after}</p>
                 </div>
               </div>
 
@@ -208,7 +208,7 @@ export function CaseStudies() {
                   <div key={idx} className="bg-white/5 p-3 rounded text-center">
                     <p className="text-white/60 text-xs mb-1">{stat.label}</p>
                     <p className="text-white text-xs font-semibold mb-1">{stat.before}</p>
-                    <p className="text-gold-400 text-xs font-bold">→ {stat.after}</p>
+                    <p className="text-primary text-xs font-bold">→ {stat.after}</p>
                   </div>
                 ))}
               </div>
