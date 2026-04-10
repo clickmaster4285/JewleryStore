@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import gsap from 'gsap'
 
 const testimonials = [
   {
@@ -37,19 +38,156 @@ const testimonials = [
 export function Testimonials() {
   const [current, setCurrent] = useState(0)
   const [autoPlay, setAutoPlay] = useState(true)
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const animationRef = useRef<GSAPTimeline | null>(null)
 
   useEffect(() => {
+    // Initial heading animation
+    gsap.fromTo(headingRef.current,
+      {
+        opacity: 0,
+        y: 30
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out'
+      }
+    )
+
+    // Animate first card
+    animateCard(current)
+
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill()
+      }
+    }
+  }, [])
+
+  const animateCard = (index: number) => {
+    // Kill any ongoing animation
+    if (animationRef.current) {
+      animationRef.current.kill()
+    }
+
+    // Create new animation timeline
+    animationRef.current = gsap.timeline()
+    
+    // Animate the current card
+    const currentCard = cardRefs.current[index]
+    if (currentCard) {
+      animationRef.current
+        .fromTo(currentCard,
+          {
+            opacity: 0,
+            scale: 0.8,
+            rotationY: -30,
+            filter: 'blur(10px)'
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            rotationY: 0,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            ease: 'back.out(0.5)'
+          }
+        )
+        .fromTo(currentCard.querySelector('.stars'),
+          {
+            opacity: 0,
+            scale: 0
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.4,
+            ease: 'back.out(0.6)'
+          },
+          '-=0.3'
+        )
+        .fromTo(currentCard.querySelector('.testimonial-content'),
+          {
+            opacity: 0,
+            y: 20
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+          },
+          '-=0.2'
+        )
+        .fromTo(currentCard.querySelector('.testimonial-author'),
+          {
+            opacity: 0,
+            x: -20
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: 'power2.out'
+          },
+          '-=0.2'
+        )
+    }
+  }
+
+  const goToNext = () => {
+    const nextIndex = (current + 1) % testimonials.length
+    setCurrent(nextIndex)
+    animateCard(nextIndex)
+  }
+
+  const goToPrev = () => {
+    const prevIndex = (current - 1 + testimonials.length) % testimonials.length
+    setCurrent(prevIndex)
+    animateCard(prevIndex)
+  }
+
+  const goToIndex = (index: number) => {
+    setCurrent(index)
+    animateCard(index)
+  }
+
+  // Auto-play effect
+  useEffect(() => {
     if (!autoPlay) return
+    
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length)
-    }, 6000)
+      goToNext()
+    }, 5000)
+    
     return () => clearInterval(timer)
-  }, [autoPlay])
+  }, [autoPlay, current])
+
+  // Helper function to render stars
+  const renderStars = (rating: number) => {
+  return [...Array(5)].map((_, i) => (
+    <Star
+      key={i}
+      size={18}
+      fill={i < rating ? "#FFD700" : "none"}  // ← This fills the star!
+      color={i < rating ? "#FFD700" : "rgba(255,255,255,0.3)"}
+      strokeWidth={1.5}
+    />
+  ))
+}
 
   return (
-    <section className="bg-black py-20">
+    <section 
+      ref={sectionRef}
+      className="bg-black py-20 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             What Retailers Say
           </h2>
@@ -60,35 +198,43 @@ export function Testimonials() {
 
         {/* Testimonial Carousel */}
         <div 
+          ref={carouselRef}
           className="relative max-w-3xl mx-auto"
           onMouseEnter={() => setAutoPlay(false)}
           onMouseLeave={() => setAutoPlay(true)}
         >
           {/* Testimonial Cards */}
-          <div className="relative h-80 md:h-72 lg:h-64">
+          <div className="relative h-80 md:h-72">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 transition-all duration-700 ${
-                  index === current ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                ref={el => {
+                  cardRefs.current[index] = el
+                }}
+                className={`absolute inset-0 transition-all duration-500 ${
+                  index === current ? 'z-10' : 'z-0 pointer-events-none'
                 }`}
+                style={{
+                  opacity: index === current ? 1 : 0,
+                  visibility: index === current ? 'visible' : 'hidden'
+                }}
               >
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 p-8 rounded-xl h-full flex flex-col justify-between">
-                  {/* Stars */}
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={18} className="text-gold-400 fill-gold-400" />
-                    ))}
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 p-8 rounded-xl h-full flex flex-col justify-between shadow-2xl">
+                  {/* Stars - Now properly filled */}
+                  <div className="stars flex gap-1">
+                    {renderStars(testimonial.rating)}
                   </div>
 
                   {/* Content */}
-                  <p className="text-white text-lg">&ldquo;{testimonial.content}&rdquo;</p>
+                  <p className="testimonial-content text-white text-lg leading-relaxed">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
 
                   {/* Author */}
-                  <div>
-                    <p className="text-white font-semibold">{testimonial.name}</p>
+                  <div className="testimonial-author">
+                    <p className="text-white font-semibold text-lg">{testimonial.name}</p>
                     <p className="text-white/60 text-sm">{testimonial.role}</p>
-                    <p className="text-gold-400 text-xs">{testimonial.company}</p>
+                    <p className="text-gold-400 text-xs mt-1">{testimonial.company}</p>
                   </div>
                 </div>
               </div>
@@ -98,8 +244,8 @@ export function Testimonials() {
           {/* Controls */}
           <div className="flex items-center justify-between mt-8">
             <button
-              onClick={() => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition duration-300 border border-white/20"
+              onClick={goToPrev}
+              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-gold-500/50 hover:scale-110"
             >
               <ChevronLeft size={20} />
             </button>
@@ -109,21 +255,26 @@ export function Testimonials() {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`w-2 h-2 rounded-full transition duration-300 ${
-                    index === current ? 'bg-gold-500 w-8' : 'bg-white/40'
+                  onClick={() => goToIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-500 ${
+                    index === current 
+                      ? 'bg-gold-500 w-8' 
+                      : 'bg-white/40 w-2 hover:bg-white/60'
                   }`}
                 />
               ))}
             </div>
 
             <button
-              onClick={() => setCurrent((prev) => (prev + 1) % testimonials.length)}
-              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition duration-300 border border-white/20"
+              onClick={goToNext}
+              className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 border border-white/20 hover:border-gold-500/50 hover:scale-110"
             >
               <ChevronRight size={20} />
             </button>
           </div>
+
+          {/* Auto-play indicator */}
+      
         </div>
       </div>
     </section>

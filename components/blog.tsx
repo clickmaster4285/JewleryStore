@@ -1,7 +1,12 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Calendar, ArrowRight } from 'lucide-react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const blogPosts = [
   {
@@ -55,13 +60,112 @@ const blogPosts = [
 ]
 
 export function Blog() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const featuredPostRef = useRef<HTMLDivElement>(null)
+  const otherPostsRef = useRef<(HTMLDivElement | null)[]>([])
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
   const featured = blogPosts[0]
   const others = blogPosts.slice(1)
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading fade in
+      gsap.fromTo(headingRef.current,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
+
+      // Featured post fade in
+      gsap.fromTo(featuredPostRef.current,
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: featuredPostRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
+
+      // Other posts staggered fade in
+      otherPostsRef.current.forEach((post, index) => {
+        if (!post) return
+        
+        gsap.fromTo(post,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: post,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        )
+      })
+
+      // Button fade in
+      gsap.fromTo(buttonRef.current,
+        {
+          opacity: 0,
+          y: 20
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: 0.4,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: buttonRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="blog" className="bg-gradient-to-b from-black to-gray-900 py-20">
+    <section 
+      id="blog" 
+      ref={sectionRef}
+      className="bg-gradient-to-b from-black to-gray-900 py-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Latest Insights
           </h2>
@@ -71,7 +175,10 @@ export function Blog() {
         </div>
 
         {/* Featured Post */}
-        <div className="mb-12 group cursor-pointer">
+        <div 
+          ref={featuredPostRef}
+          className="mb-12 group cursor-pointer"
+        >
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             <div className="relative h-64 lg:h-full rounded-lg overflow-hidden">
               <Image
@@ -82,7 +189,7 @@ export function Blog() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
-            <div className="flex flex-col justify-center p-8 bg-white/5 border border-white/10 rounded-lg hover:border-gold-500/50 transition-all duration-300 hover:bg-white/10">
+            <div className="flex flex-col justify-center p-8 bg-white/5 border border-white/10 rounded-lg transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-gold-400 font-bold text-sm">FEATURED</span>
               </div>
@@ -103,10 +210,13 @@ export function Blog() {
 
         {/* Other Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {others.map((post) => (
+          {others.map((post, index) => (
             <div
               key={post.id}
-              className="group cursor-pointer bg-white/5 border border-white/10 rounded-lg overflow-hidden hover:border-gold-500/50 transition-all duration-300 hover:bg-white/10 flex flex-col"
+              ref={el => {
+                otherPostsRef.current[index] = el
+              }}
+              className="group cursor-pointer bg-white/5 border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10 flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
@@ -134,7 +244,10 @@ export function Blog() {
         </div>
 
         <div className="text-center mt-12">
-          <button className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded transition-all duration-300 border border-white/20 hover:border-gold-500/50">
+          <button 
+            ref={buttonRef}
+            className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded transition-all duration-300 border border-white/20 hover:border-gold-500/50"
+          >
             View All Articles
           </button>
         </div>

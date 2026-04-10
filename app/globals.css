@@ -15,10 +15,10 @@
 
   /* 💎 GOLD PRIMARY */
   --primary: oklch(0.72 0.16 85);
-  --primary-foreground: oklch(0.98 0.01 95);
+  --primary-foreground: rgb(0, 0, 0);
 
   --secondary: oklch(0.96 0.01 95);
-  --secondary-foreground: oklch(0.20 0.02 85);
+  --secondary-foreground:oklch(0.98 0.01 95);
 
   --muted: oklch(0.95 0.01 95);
   --muted-foreground: oklch(0.55 0.01 85);

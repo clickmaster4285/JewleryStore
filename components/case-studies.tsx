@@ -1,7 +1,12 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { TrendingUp } from 'lucide-react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const caseStudies = [
   {
@@ -40,10 +45,88 @@ const caseStudies = [
 ]
 
 export function CaseStudies() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const featuredCardRef = useRef<HTMLDivElement>(null)
+  const otherCardsRef = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading fade in
+      gsap.fromTo(headingRef.current,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
+
+      // Featured card fade in
+      gsap.fromTo(featuredCardRef.current,
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: featuredCardRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      )
+
+      // Other cards staggered fade in
+      otherCardsRef.current.forEach((card, index) => {
+        if (!card) return
+        
+        gsap.fromTo(card,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: index * 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        )
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="case-studies" className="bg-gradient-to-b from-black to-gray-900 py-20">
+    <section 
+      id="case-studies" 
+      ref={sectionRef}
+      className="bg-gradient-to-b from-black to-gray-900 py-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Real Results from Real Retailers
           </h2>
@@ -53,9 +136,12 @@ export function CaseStudies() {
         </div>
 
         {/* Featured Case Study */}
-        <div className="mb-12 bg-gradient-to-r from-gold-500/10 to-transparent p-8 lg:p-12 rounded-xl border border-gold-500/30">
+        <div 
+          ref={featuredCardRef}
+          className="mb-12 bg-gradient-to-r from-gold-500/10 to-transparent p-8 lg:p-12 rounded-xl border border-gold-500/30"
+        >
           <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="relative h-64 lg:h-full rounded-lg overflow-hidden">
+            <div className="relative h-64 lg:h-[400px] rounded-lg overflow-hidden">
               <Image
                 src="/case-study-1.jpg"
                 alt="Featured case study"
@@ -64,6 +150,7 @@ export function CaseStudies() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
+            
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <TrendingUp className="text-gold-400" size={24} />
@@ -95,8 +182,14 @@ export function CaseStudies() {
 
         {/* Other Case Studies */}
         <div className="grid md:grid-cols-2 gap-8">
-          {caseStudies.slice(1).map((study) => (
-            <div key={study.id} className="bg-white/5 border border-white/10 p-6 rounded-lg hover:border-gold-500/50 transition-all duration-300 hover:bg-white/10">
+          {caseStudies.slice(1).map((study, index) => (
+            <div 
+              key={study.id}
+              ref={el => {
+                otherCardsRef.current[index] = el
+              }}
+              className="bg-white/5 border border-white/10 p-6 rounded-lg transition-all duration-300 hover:border-gold-500/50 hover:bg-white/10"
+            >
               <h3 className="text-2xl font-bold text-white mb-4">{study.company}</h3>
               
               <div className="mb-6 space-y-2">
