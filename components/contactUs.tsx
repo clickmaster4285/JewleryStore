@@ -203,7 +203,7 @@ export function Contact() {
     setIsSubmitting(true)
     
     try {
-      const response = await fetch("https://software.clickmasters.pk/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
