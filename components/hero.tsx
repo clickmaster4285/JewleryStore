@@ -6,11 +6,11 @@ import Image from 'next/image'
 import { ChevronDown, Sparkles, Shield, Zap, Star, ArrowRight, Gem, TrendingUp, Clock } from 'lucide-react'
 
 const heroImages = [
-  '/hero-jewelry-1.jpg',
-  '/hero-jewelry-2.jpg',
-  '/hero-jewelry-3.jpg',
-  '/hero-jewelry-4.jpg',
-  '/hero-jewelry-5.jpg',
+  '/hero-jewelry-1.webp',
+  '/hero-jewelry-2.webp',
+  '/hero-jewelry-3.webp',
+  '/hero-jewelry-4.webp',
+  '/hero-jewelry-5.webp',
 ]
 
 const stats = [

@@ -15,7 +15,7 @@ const blogPosts = [
     excerpt: 'Learn how to optimize your jewelry inventory with best practices and smart systems.',
     date: 'Mar 15, 2025',
     featured: true,
-    image: '/blog-featured.jpg'
+    image: '/blog-featured.webp'
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const blogPosts = [
     excerpt: 'Understand the essential metrics that determine your retail profitability.',
     date: 'Mar 10, 2025',
     featured: false,
-    image: '/hero-jewelry-1.jpg'
+    image: '/hero-jewelry-1.webp'
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const blogPosts = [
     excerpt: 'Build lasting relationships with your customers through smart CRM practices.',
     date: 'Mar 5, 2025',
     featured: false,
-    image: '/hero-jewelry-2.jpg'
+    image: '/hero-jewelry-2.webp'
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const blogPosts = [
     excerpt: 'How modern technology is reshaping the jewelry retail landscape.',
     date: 'Feb 28, 2025',
     featured: false,
-    image: '/hero-jewelry-3.jpg'
+    image: '/hero-jewelry-3.webp'
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const blogPosts = [
     excerpt: 'Implement security measures to protect your high-value inventory.',
     date: 'Feb 20, 2025',
     featured: false,
-    image: '/case-study-1.jpg'
+    image: '/case-study-1.webp'
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ const blogPosts = [
     excerpt: 'Scale your jewelry business across multiple locations efficiently.',
     date: 'Feb 15, 2025',
     featured: false,
-    image: '/solution-image.jpg'
+    image: '/solution-image.webp'
   }
 ]
 

@@ -227,7 +227,7 @@ export function Solution() {
             }}
           >
             <Image
-              src="/solution-image.jpg"
+              src="/solution-image.webp"
               alt="Solution showcase"
               fill
               className="object-cover"

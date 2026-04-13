@@ -216,7 +216,7 @@ export function About() {
               {/* Image 1 */}
               <div className="relative h-48 rounded-xl overflow-hidden group">
                 <Image
-                  src="/about-image1.jpg"
+                  src="/about-image1.webp"
                   alt="Luxury jewelry display"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -227,7 +227,7 @@ export function About() {
               {/* Image 2 */}
               <div className="relative h-48 rounded-xl overflow-hidden group mt-8">
                 <Image
-                  src="/about-image2.jpg"
+                  src="/about-image2.webp"
                   alt="Diamond rings collection"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -238,7 +238,7 @@ export function About() {
               {/* Image 3 */}
               <div className="relative h-48 rounded-xl overflow-hidden group -mt-4">
                 <Image
-                  src="/about-image3.jpg"
+                  src="/about-image3.webp"
                   alt="Gold necklace display"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -249,7 +249,7 @@ export function About() {
               {/* Image 4 */}
               <div className="relative h-48 rounded-xl overflow-hidden group">
                 <Image
-                  src="/about-image4.jpg"
+                  src="/about-image4.webp"
                   alt="Watch collection"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
