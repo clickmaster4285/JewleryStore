@@ -227,10 +227,17 @@ export function Solution() {
             }}
           >
             <Image
-              src="/solution-image.jpg"
+              src="/solution-image.webp"
               alt="Solution showcase"
               fill
               className="object-cover"
+              priority={true}
+              fetchPriority="high"
+              quality={85}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQAAAgICAgMAAAAAAAAAAAAAAAAAAAAZGBwkCAwEBAQAAAAAAAAAAAAAAAAAAAAAABAQADBAUGBwcGBggIAQAAAAAAAAAAAAABAgMRBCExQVGBIjJSIkKxI1Gx0RNDcpL/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A2j78X/9k="
+              sizes="(max-width: 768px) 100vw, 50vw"
+              decoding="async"
             />
             <div className="image-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             

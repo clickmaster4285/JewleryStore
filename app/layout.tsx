@@ -27,6 +27,13 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  // Preload critical images
+  other: {
+    'link': [
+      { href: '/about-image1.webp', rel: 'preload', as: 'image', type: 'image/webp' },
+      { href: '/solution-image.webp', rel: 'preload', as: 'image', type: 'image/webp' },
+    ]
+  }
 }
 
 export default function RootLayout({

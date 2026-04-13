@@ -143,7 +143,7 @@ export function CaseStudies() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="relative h-64 lg:h-[400px] rounded-lg overflow-hidden">
               <Image
-                src="/case-study-1.jpg"
+                src="/case-study-1.webp"
                 alt="Featured case study"
                 fill
                 className="object-cover"

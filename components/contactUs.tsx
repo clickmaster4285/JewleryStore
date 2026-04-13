@@ -203,14 +203,11 @@ export function Contact() {
     setIsSubmitting(true)
     
     try {
-   const response = await fetch("https://software.clickmasters.pk/api/contact", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  },
-  body: JSON.stringify(formData),
-})
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      })
 
       const result = await response.json()
 
@@ -282,7 +279,7 @@ const getMapEmbedUrl = () => {
   )}&t=&z=16&ie=UTF8&iwloc=&output=embed`
   }
   
-
+  
   const getDirectionsUrl = () => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(LOCATION.fullAddress)}`
   
   const getStaticMapUrl = () => {
